@@ -19,6 +19,7 @@ export default {
             children: []
         };
     },
+    children: 'col',
     props() {
         return [
             {

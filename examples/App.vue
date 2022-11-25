@@ -2,18 +2,18 @@
     <div id="app">
         <div class="_fc-t-header">
             <img class="_fc-t-logo" src="http://form-create.com/logo.png">
-            <div class="_fc-t-name">form-create-designer</div>
+            <div class="_fc-t-name">fc-designer</div>
             <div class="_fc-t-menu">
-                <el-button size="mini" icon="fc-icon icon-import" @click="setJson"> 导入JSON</el-button>
-                <el-button size="mini" icon="fc-icon icon-import" @click="setOption"> 导入Options</el-button>
+                <!-- <el-button size="mini" icon="fc-icon icon-import" @click="setJson"> 导入JSON</el-button>
+                <el-button size="mini" icon="fc-icon icon-import" @click="setOption"> 导入Options</el-button> -->
                 <el-button size="mini" type="primary" @click="showJson">生成JSON</el-button>
-                <el-button size="mini" type="success" @click="showOption">生成Options</el-button>
-                <el-button size="mini" type="danger" @click="showTemplate">生成组件</el-button>
+                <!-- <el-button size="mini" type="success" @click="showOption">生成Options</el-button>
+                <el-button size="mini" type="danger" @click="showTemplate">生成组件</el-button> -->
             </div>
         </div>
-        <fc-designer ref="designer"/>
+        <fc-designer ref="designer" :mask="false"/>
 
-        <ElFooter class="_fc-copyright" height="30px">
+        <!-- <ElFooter class="_fc-copyright" height="30px">
           <div class="_fc-b-item">
             <el-popover
                 placement="top"
@@ -29,7 +29,7 @@
           <div class="_fc-b-item">
             <a href='https://gitee.com/xaboy/form-create-designer/stargazers' style="display: inline-flex;"><img src='https://gitee.com/xaboy/form-create-designer/badge/star.svg?theme=dark' alt='gitee'/></a>
           </div>
-        </ElFooter>
+        </ElFooter> -->
 
         <el-dialog :title="title[type]" :visible.sync="state" class="_fc-t-dialog">
             <div ref="editor" v-if="state"></div>

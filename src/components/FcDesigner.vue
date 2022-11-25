@@ -211,10 +211,10 @@
                                 <ElDivider>属性配置</ElDivider>
                                 <component :is="FormCreate" v-model="propsForm.api" :rule="propsForm.rule" :option="propsForm.options"
                                             @change="propChange" @removeField="propRemoveField"></component>
-                                <ElDivider v-if="showBaseRule">验证规则</ElDivider>
+                                <!-- <ElDivider v-if="showBaseRule">验证规则</ElDivider>
                                 <component :is="FormCreate" v-show="showBaseRule" v-model="validateForm.api" :rule="validateForm.rule"
                                             :option="validateForm.options"
-                                            @update:value="validateChange"></component>
+                                            @update:value="validateChange"></component> -->
                             </div>
                         </ElMain>
                     </ElContainer>
@@ -491,6 +491,7 @@ export default {
             this.setRule([]);
         },
         makeDragRule(children) {
+            console.log(11111)
             return [this.makeDrag(true, 'draggable', children, {
                 add: (inject, evt) => this.dragAdd(children, evt),
                 end: (inject, evt) => this.dragEnd(children, evt),
@@ -713,6 +714,8 @@ export default {
             }
         },
         dragAdd(children, evt) {
+            console.log('333333');
+            
             const newIndex = evt.newIndex;
             const menu = evt.item._underlying_vm_;
             if (!menu) {
@@ -736,6 +739,8 @@ export default {
             this.added = false;
         },
         makeRule(config, _rule) {
+            console.log('33333', 'makeRule');
+            
             const rule = _rule || config.rule();
             rule.config = {config};
             if (!rule.effect) rule.effect = {};
@@ -746,12 +751,16 @@ export default {
 
             if (config.drag) {
                 const children = [];
-                rule.children.push(drag = this.makeDrag(config.drag, rule.type, children, {
+                const a = (drag = this.makeDrag(config.drag, rule.type, children, {
                     end: (inject, evt) => this.dragEnd(inject.self.children, evt),
-                    add: (inject, evt) => this.dragAdd(inject.self.children, evt),
+                    add: (inject, evt) => {console.log('444444');
+                     return this.dragAdd(inject.self.children, evt)},
                     start: (inject, evt) => this.dragStart(inject.self.children, evt),
                     unchoose: (inject, evt) => this.dragUnchoose(inject.self.children, evt),
-                }));
+                }))
+                console.log('1444444', a);
+                
+                rule.children.push(a);
             }
 
             if (config.children && !_rule) {
@@ -781,6 +790,8 @@ export default {
                             this.clearActiveRule();
                         },
                         add: ({self}) => {
+                            console.log('11113231');
+                            
                             const top = this.getParent(self);
                             this.$emit('add', top.parent);
                             top.root.children.splice(top.root.children.indexOf(top.parent) + 1, 0, this.makeRule(top.parent.config.config));

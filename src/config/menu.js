@@ -28,21 +28,25 @@ export default function createMenu() {
             name: 'main',
             title: '表单组件',
             list: [
-                input, number, radio, checkbox, select, _switch, time, date, slider, rate, color, cascader, upload, transfer, tree, editor
+                input, 
+                // number, radio, checkbox, select, _switch, time, date, slider, rate, color, cascader, upload, transfer, tree, editor
             ]
         },
         {
             name: 'aide',
             title: '辅助组件',
             list: [
-                alert, button, span, divider
+                span
+                // alert, button, span, divider
             ]
         },
         {
             name: 'layout',
             title: '布局组件',
             list: [
-                row, /*tab,*/ space
+                row,
+                // tab,
+                // space
             ]
         },
     ];
