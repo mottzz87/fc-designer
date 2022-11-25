@@ -587,7 +587,7 @@ export default {
                 }
                 if (!rule) return initial;
                 rule = {...rule};
-                if (rule.children.length) {
+                if (rule.children && rule.children.length) {
                     rule.children = this.parseRule(rule.children);
                 }
 

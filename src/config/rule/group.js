@@ -17,8 +17,7 @@ export default {
     children: 'row',
     props() {
         return [
-            {type: 'inputNumber', field: 'gutter', title: '栅格间隔'}, 
-            
-    ];
+            {type: 'input', field: 'header', title: '分组标题'} 
+        ];
     }
 };
